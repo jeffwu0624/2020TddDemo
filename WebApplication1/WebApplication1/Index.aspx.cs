@@ -17,7 +17,15 @@ namespace WebApplication1
 
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
-                    CalculatedByBlackCat();
+                    //CalculatedByBlackCat();
+
+                    // 計算
+                    var blackCat = new BlackCat() {ShipProduct = product};
+                    blackCat.Calculated();
+
+                    // 顯示結果
+                    ltrLogistics.Text = blackCat.GetCompanyName();
+                    ltrFee.Text = blackCat.GetFee().ToString();
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
@@ -100,6 +108,26 @@ namespace WebApplication1
                 ltrFee.Text = (100 + weight * 10).ToString("C");
             }
         }
+    }
+
+    public class BlackCat
+    {
+        public void Calculated()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetCompanyName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetFee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product ShipProduct { get; set; }
     }
 
     public class Product
