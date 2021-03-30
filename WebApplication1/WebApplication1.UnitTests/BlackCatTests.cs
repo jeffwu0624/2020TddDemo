@@ -20,7 +20,7 @@ namespace WebApplication1.UnitTests
         }
 
         [Test()]
-        public void GetFee_ShoudBeZero_WhenInit()
+        public void GetFee_ShouldBeZero_WhenInit()
         {
             var fee = _blackCat.GetFee();
 
@@ -28,18 +28,35 @@ namespace WebApplication1.UnitTests
         }
 
         [Test()]
-        public void GetFee_ShoudBe500_WhenWeightMoreThen500()
+        public void GetFee_ShouldBe500_WhenWeightMoreThen500()
         {
             _blackCat.ShipProduct = new Product()
             {
                 Weight = 500
             };
 
+            FeeShouldBe(500);
+        }
+
+        [Test()]
+        public void GetFee_ShouldBe500_WhenWeightLessThen500()
+        {
+            _blackCat.ShipProduct = new Product()
+            {
+                Weight = 20,
+                Length = 10,
+                Width = 10,
+                Height = 10,
+            };
+
+            FeeShouldBe(300);
+        }
+
+        private void FeeShouldBe(int expected)
+        {
             _blackCat.Calculated();
 
-            var fee = _blackCat.GetFee();
-
-            Assert.AreEqual(500, fee);
+            Assert.AreEqual(expected, _blackCat.GetFee());
         }
     }
 }
