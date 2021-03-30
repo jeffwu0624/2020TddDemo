@@ -40,7 +40,13 @@ namespace WebApplication1
                 }
                 else if ("3".Equals(ddlLogistics.SelectedValue))
                 {
-                    CalculatedByPostOffice();
+                    //CalculatedByPostOffice();
+
+                    var postOffice = new PostOffice() { ShipProduct = product};
+                    postOffice.Calculated();
+
+                    companyName = postOffice.GetCompanyName();
+                    fee = postOffice.GetFee();
                 }
 
                 ltrLogistics.Text = companyName;
@@ -117,6 +123,28 @@ namespace WebApplication1
             {
                 ltrFee.Text = (100 + weight * 10).ToString("C");
             }
+        }
+    }
+
+    public class PostOffice
+    {
+        private readonly string _companyName = "郵局";
+
+        public void Calculated()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product ShipProduct { get; set; }
+
+        public string GetCompanyName()
+        {
+            return _companyName;
+        }
+
+        public double GetFee()
+        {
+            throw new NotImplementedException();
         }
     }
 

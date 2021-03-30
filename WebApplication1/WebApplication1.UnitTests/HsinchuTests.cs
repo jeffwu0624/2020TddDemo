@@ -40,11 +40,28 @@ namespace WebApplication1.UnitTests
                 Height = 101
             };
 
+            FeeShouldBe(40506);
+        }
+
+        [Test()]
+        public void GetFee_ShouldBe_WhenSizeLessThen100()
+        {
+            _hsinchu.ShipProduct = new Product()
+            {
+                Weight = 100,
+                Length = 10,
+                Width = 10,
+                Height = 10
+            };
+
+            FeeShouldBe(42);
+        }
+
+        private void FeeShouldBe(int expected)
+        {
             _hsinchu.Calculated();
 
-            var fee = _hsinchu.GetFee();
-
-            Assert.That(40506, Is.EqualTo(40506).Within(0.5));
+            Assert.That(_hsinchu.GetFee(), Is.EqualTo(expected).Within(0.9));
         }
     }
 }
