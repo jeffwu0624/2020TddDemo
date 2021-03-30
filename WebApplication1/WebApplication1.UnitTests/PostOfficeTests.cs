@@ -29,5 +29,11 @@ namespace WebApplication1.UnitTests
 
             Assert.AreEqual(0, fee);
         }
+
+        [Test]
+        public void GetFee_ShouldBe_When()
+        {
+            
+        }
     }
 }
