@@ -24,7 +24,9 @@ namespace WebApplication1.UnitTests
         [Test()]
         public void GetFee_ShouldBeZero_WhenInit()
         {
-            
+            var fee = _hsinchu.GetFee();
+
+            Assert.AreEqual(0, fee);
         }
     }
 }

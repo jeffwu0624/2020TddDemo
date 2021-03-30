@@ -122,6 +122,9 @@ namespace WebApplication1
 
     public class Hsinchu
     {
+        private readonly string _companyName = "新竹貨運";
+        private int _fee = 0;
+
         public void Calculated()
         {
             throw new NotImplementedException();
@@ -129,12 +132,12 @@ namespace WebApplication1
 
         public string GetCompanyName()
         {
-            return "新竹貨運";
+            return _companyName;
         }
 
         public double GetFee()
         {
-            throw new NotImplementedException();
+            return _fee;
         }
 
         public Product ShipProduct { get; set; }
