@@ -13,6 +13,8 @@ namespace WebApplication1
         {
             if (IsValid)
             {
+                var product = GetProduct();
+
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
                     CalculatedByBlackCat();
@@ -26,6 +28,17 @@ namespace WebApplication1
                     CalculatedByPostOffice();
                 }
             }
+        }
+
+        private Product GetProduct()
+        {
+            return new Product()
+            {
+                Weight = Convert.ToDouble(txtWeight.Text),
+                Length = Convert.ToDouble(txtLength.Text),
+                Width = Convert.ToDouble(txtWidth.Text),
+                Height = Convert.ToDouble(txtHeight.Text),
+            };
         }
 
         private void CalculatedByPostOffice()
@@ -87,5 +100,13 @@ namespace WebApplication1
                 ltrFee.Text = (100 + weight * 10).ToString("C");
             }
         }
+    }
+
+    public class Product
+    {
+        public double Weight { get; set; }
+        public double Height { get; set; }
+        public double Length { get; set; }
+        public double Width { get; set; }
     }
 }
