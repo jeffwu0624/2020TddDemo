@@ -5,22 +5,41 @@ namespace WebApplication1.UnitTests
     [TestFixture()]
     public class BlackCatTests
     {
-        [Test()]
-        public void CalculatedTest()
-        {
-            Assert.Fail();
-        }
+        private BlackCat _blackCat;
 
         [Test()]
         public void GetCompanyNameTest()
         {
-            Assert.Fail();
+            Assert.AreEqual("黑貓", _blackCat.GetCompanyName());
+        }
+
+        [SetUp]
+        public void Init()
+        {
+            _blackCat = new BlackCat();
         }
 
         [Test()]
-        public void GetFeeTest()
+        public void GetFee_ShoudBeZero_WhenInit()
         {
-            Assert.Fail();
+            var fee = _blackCat.GetFee();
+
+            Assert.AreEqual(0, fee);
+        }
+
+        [Test()]
+        public void GetFee_ShoudBe500_WhenWeightMoreThen500()
+        {
+            _blackCat.ShipProduct = new Product()
+            {
+                Weight = 500
+            };
+
+            _blackCat.Calculated();
+
+            var fee = _blackCat.GetFee();
+
+            Assert.AreEqual(500, fee);
         }
     }
 }
