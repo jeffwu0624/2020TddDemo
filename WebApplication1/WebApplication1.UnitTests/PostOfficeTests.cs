@@ -5,22 +5,29 @@ namespace WebApplication1.UnitTests
     [TestFixture()]
     public class PostOfficeTests
     {
-        
+        private PostOffice _postOffice;
+
 
         [Test()]
         public void GetCompanyName_Test()
         {
-            var postOffice = new PostOffice();
-
-            var companyName = postOffice.GetCompanyName();
+            var companyName = _postOffice.GetCompanyName();
 
             Assert.AreEqual("郵局",companyName);
         }
 
-        [Test()]
-        public void GetFeeTest()
+        [SetUp]
+        public void Init()
         {
-            Assert.Fail();
+            _postOffice = new PostOffice();
+        }
+
+        [Test()]
+        public void GetFee_ShouldBeZero_WhenInit()
+        {
+            var fee = _postOffice.GetFee();
+
+            Assert.AreEqual(0, fee);
         }
     }
 }

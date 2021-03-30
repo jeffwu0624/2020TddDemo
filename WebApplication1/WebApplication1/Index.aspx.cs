@@ -129,6 +129,7 @@ namespace WebApplication1
     public class PostOffice
     {
         private readonly string _companyName = "郵局";
+        private int _fee = 0;
 
         public void Calculated()
         {
@@ -144,7 +145,7 @@ namespace WebApplication1
 
         public double GetFee()
         {
-            throw new NotImplementedException();
+            return _fee;
         }
     }
 
