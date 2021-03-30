@@ -129,7 +129,7 @@ namespace WebApplication1
 
         public string GetCompanyName()
         {
-            throw new NotImplementedException();
+            return "新竹貨運";
         }
 
         public double GetFee()
