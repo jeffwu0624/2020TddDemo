@@ -14,6 +14,8 @@ namespace WebApplication1
             if (IsValid)
             {
                 var product = GetProduct();
+                var companyName = "";
+                var fee = 0d;
 
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
@@ -24,8 +26,8 @@ namespace WebApplication1
                     blackCat.Calculated();
 
                     // 顯示結果
-                    ltrLogistics.Text = blackCat.GetCompanyName();
-                    ltrFee.Text = blackCat.GetFee().ToString();
+                    companyName = blackCat.GetCompanyName();
+                    fee = blackCat.GetFee();
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
@@ -35,6 +37,9 @@ namespace WebApplication1
                 {
                     CalculatedByPostOffice();
                 }
+
+                ltrLogistics.Text = companyName;
+                ltrFee.Text = fee.ToString("c");
             }
         }
 
