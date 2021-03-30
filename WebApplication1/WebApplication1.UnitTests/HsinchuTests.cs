@@ -28,5 +28,23 @@ namespace WebApplication1.UnitTests
 
             Assert.AreEqual(0, fee);
         }
+
+        [Test()]
+        public void GetFee_ShouldBe_WhenSizeMoreThen100()
+        {
+            _hsinchu.ShipProduct = new Product()
+            {
+                Weight = 100,
+                Length = 101,
+                Width = 101,
+                Height = 101
+            };
+
+            _hsinchu.Calculated();
+
+            var fee = _hsinchu.GetFee();
+
+            Assert.That(40506, Is.EqualTo(40506).Within(0.5));
+        }
     }
 }
