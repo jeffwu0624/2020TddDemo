@@ -31,7 +31,12 @@ namespace WebApplication1
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
-                    CalculatedByHsinchu();
+                    //CalculatedByHsinchu();
+                    var hsinchu = new Hsinchu() {ShipProduct = product};
+                    hsinchu.Calculated();
+
+                    companyName = hsinchu.GetCompanyName();
+                    fee = hsinchu.GetFee();
                 }
                 else if ("3".Equals(ddlLogistics.SelectedValue))
                 {
@@ -113,6 +118,26 @@ namespace WebApplication1
                 ltrFee.Text = (100 + weight * 10).ToString("C");
             }
         }
+    }
+
+    public class Hsinchu
+    {
+        public void Calculated()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetCompanyName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetFee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product ShipProduct { get; set; }
     }
 
     public class BlackCat
