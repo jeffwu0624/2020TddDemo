@@ -2,30 +2,9 @@
 
 namespace WebApplication1
 {
-    public partial class Index : System.Web.UI.Page
+    public class LogisticsFactory
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnCalculator_Click(object sender, EventArgs e)
-        {
-            if (IsValid)
-            {
-                var product = GetProduct();
-
-                var logistics = CreateLogistics(product, ddlLogistics.SelectedValue);
-
-                logistics.Calculated();
-
-                ltrLogistics.Text = logistics.GetCompanyName();
-
-                ltrFee.Text = logistics.GetFee().ToString("c");
-            }
-        }
-
-        private ILogistics CreateLogistics(Product product, string logisticsSelectedValue)
+        public static ILogistics CreateLogistics(Product product, string logisticsSelectedValue)
         {
             //string companyName;
             //double fee;
@@ -70,7 +49,31 @@ namespace WebApplication1
                 return new PostOffice() {ShipProduct = product};
             }
 
-            throw new ArgumentException("No Match Logistics");
+            throw new ArgumentException("No Match LogisticsFactory");
+        }
+    }
+
+    public partial class Index : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCalculator_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                var product = GetProduct();
+
+                var logistics = LogisticsFactory.CreateLogistics(product, ddlLogistics.SelectedValue);
+
+                logistics.Calculated();
+
+                ltrLogistics.Text = logistics.GetCompanyName();
+
+                ltrFee.Text = logistics.GetFee().ToString("c");
+            }
         }
 
         private Product GetProduct()
