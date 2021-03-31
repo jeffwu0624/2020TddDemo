@@ -15,7 +15,7 @@ namespace WebApplication1
             {
                 var product = GetProduct();
 
-                var logistics = CreateLogistics(product);
+                var logistics = CreateLogistics(product, ddlLogistics.SelectedValue);
 
                 logistics.Calculated();
 
@@ -25,7 +25,7 @@ namespace WebApplication1
             }
         }
 
-        private ILogistics CreateLogistics(Product product)
+        private ILogistics CreateLogistics(Product product, string logisticsSelectedValue)
         {
             //string companyName;
             //double fee;
@@ -56,16 +56,16 @@ namespace WebApplication1
             //    fee = postOffice.GetFee();
             //}
 
-            if ("1".Equals(ddlLogistics.SelectedValue))
+            if ("1".Equals(logisticsSelectedValue))
             {
                 // 計算
                 return new BlackCat() {ShipProduct = product};
             }
-            else if ("2".Equals(ddlLogistics.SelectedValue))
+            else if ("2".Equals(logisticsSelectedValue))
             {
                 return new Hsinchu() {ShipProduct = product};
             }
-            else if ("3".Equals(ddlLogistics.SelectedValue))
+            else if ("3".Equals(logisticsSelectedValue))
             {
                 return new PostOffice() {ShipProduct = product};
             }
