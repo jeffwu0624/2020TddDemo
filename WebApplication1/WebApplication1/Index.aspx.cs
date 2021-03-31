@@ -175,7 +175,15 @@ namespace WebApplication1
         public Product ShipProduct { get; set; }
     }
 
-    public class BlackCat
+    public interface ILogistics
+    {
+        void Calculated();
+        string GetCompanyName();
+        double GetFee();
+        Product ShipProduct { get; set; }
+    }
+
+    public class BlackCat : ILogistics
     {
         private readonly string _companyName = "黑貓";
 
