@@ -69,6 +69,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Infrastructure\Logistics\BlackCat.cs" />
+    <Compile Include="App_Code\Infrastructure\Logistics\Hsinchu.cs" />
+    <Compile Include="App_Code\Infrastructure\Logistics\ILogistics.cs" />
+    <Compile Include="App_Code\Infrastructure\Logistics\LogisticsFactory.cs" />
+    <Compile Include="App_Code\Infrastructure\Logistics\PostOffice.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -79,6 +84,7 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

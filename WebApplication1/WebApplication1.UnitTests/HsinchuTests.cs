@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using WebApplication1.Infrastructure.Logistics;
+using WebApplication1.Models;
 
 namespace WebApplication1.UnitTests
 {
