@@ -14,39 +14,63 @@ namespace WebApplication1
             if (IsValid)
             {
                 var product = GetProduct();
-                var companyName = "";
-                var fee = 0d;
 
-                if ("1".Equals(ddlLogistics.SelectedValue))
-                {
-                    // 計算
-                    var blackCat = new BlackCat() {ShipProduct = product};
-                    blackCat.Calculated();
+                var logistics = CreateLogistics(product);
 
-                    // 顯示結果
-                    companyName = blackCat.GetCompanyName();
-                    fee = blackCat.GetFee();
-                }
-                else if ("2".Equals(ddlLogistics.SelectedValue))
-                {
-                    var hsinchu = new Hsinchu() {ShipProduct = product};
-                    hsinchu.Calculated();
+                logistics.Calculated();
 
-                    companyName = hsinchu.GetCompanyName();
-                    fee = hsinchu.GetFee();
-                }
-                else if ("3".Equals(ddlLogistics.SelectedValue))
-                {
-                    var postOffice = new PostOffice() { ShipProduct = product};
-                    postOffice.Calculated();
+                ltrLogistics.Text = logistics.GetCompanyName();
 
-                    companyName = postOffice.GetCompanyName();
-                    fee = postOffice.GetFee();
-                }
-
-                ltrLogistics.Text = companyName;
-                ltrFee.Text = fee.ToString("c");
+                ltrFee.Text = logistics.GetFee().ToString("c");
             }
+        }
+
+        private ILogistics CreateLogistics(Product product)
+        {
+            //string companyName;
+            //double fee;
+            //if ("1".Equals(ddlLogistics.SelectedValue))
+            //{
+            //    // 計算
+            //    var blackCat = new BlackCat() {ShipProduct = product};
+            //    blackCat.Calculated();
+
+            //    // 顯示結果
+            //    companyName = blackCat.GetCompanyName();
+            //    fee = blackCat.GetFee();
+            //}
+            //else if ("2".Equals(ddlLogistics.SelectedValue))
+            //{
+            //    var hsinchu = new Hsinchu() {ShipProduct = product};
+            //    hsinchu.Calculated();
+
+            //    companyName = hsinchu.GetCompanyName();
+            //    fee = hsinchu.GetFee();
+            //}
+            //else if ("3".Equals(ddlLogistics.SelectedValue))
+            //{
+            //    var postOffice = new PostOffice() {ShipProduct = product};
+            //    postOffice.Calculated();
+
+            //    companyName = postOffice.GetCompanyName();
+            //    fee = postOffice.GetFee();
+            //}
+
+            if ("1".Equals(ddlLogistics.SelectedValue))
+            {
+                // 計算
+                return new BlackCat() {ShipProduct = product};
+            }
+            else if ("2".Equals(ddlLogistics.SelectedValue))
+            {
+                return new Hsinchu() {ShipProduct = product};
+            }
+            else if ("3".Equals(ddlLogistics.SelectedValue))
+            {
+                return new PostOffice() {ShipProduct = product};
+            }
+
+            throw new ArgumentException("No Match Logistics");
         }
 
         private Product GetProduct()
@@ -61,7 +85,7 @@ namespace WebApplication1
         }
     }
 
-    public class PostOffice
+    public class PostOffice : ILogistics
     {
         private readonly string _companyName = "郵局";
         private double _fee = 0;
@@ -122,7 +146,7 @@ namespace WebApplication1
         }
     }
 
-    public class Hsinchu
+    public class Hsinchu : ILogistics
     {
         private readonly string _companyName = "新竹貨運";
         private double _fee = 0;
