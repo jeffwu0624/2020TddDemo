@@ -54,6 +54,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="App_Code\Infrastructure\Logistics\LogisticsFactoryTests.cs" />
     <Compile Include="BlackCatTests.cs" />
     <Compile Include="HsinchuTests.cs" />
     <Compile Include="PostOfficeTests.cs" />
@@ -68,6 +69,7 @@
       <Name>WebApplication1</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
