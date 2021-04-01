@@ -53,8 +53,8 @@
                     OnClick="btnCalculator_Click" />
         <hr/>
         計算結果:<br/>
-        物流商:<asp:Literal runat="server" id="ltrLogistics"></asp:Literal><br/>
-        運費:<asp:Literal runat="server" id="ltrFee"></asp:Literal>
+        物流商:<asp:Label runat="server" ID="lblLogisticsName"></asp:Label><br />
+        運費:<asp:Label runat="server" ID="lblFee"></asp:Label>
     </div>
 </form>
 </body>

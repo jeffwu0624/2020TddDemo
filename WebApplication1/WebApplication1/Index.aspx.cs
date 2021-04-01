@@ -15,22 +15,22 @@ namespace WebApplication1
             {
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
-                    ltrLogistics.Text = ddlLogistics.SelectedItem.Text;
+                    lblLogisticsName.Text = ddlLogistics.SelectedItem.Text;
 
                     var weight = Convert.ToDouble(txtWeight.Text);
 
                     if (weight > 20)
                     {
-                        ltrFee.Text = 500.ToString("C");
+                        lblFee.Text = 500.ToString("C");
                     }
                     else
                     {
-                        ltrFee.Text = (100 + weight * 10).ToString("C");
+                        lblFee.Text = (100 + weight * 10).ToString("C");
                     }
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
-                    ltrLogistics.Text = ddlLogistics.SelectedItem.Text;
+                    lblLogisticsName.Text = ddlLogistics.SelectedItem.Text;
 
                     var width = Convert.ToDouble(txtWidth.Text);
                     var length = Convert.ToDouble(txtLength.Text);
@@ -40,16 +40,16 @@ namespace WebApplication1
 
                     if (length > 100 || width > 100 || height > 100)
                     {
-                        ltrFee.Text = (size * 0.0000353 * 1100 + 500).ToString("C");
+                        lblFee.Text = (size * 0.0000353 * 1100 + 500).ToString("C");
                     }
                     else
                     {
-                        ltrFee.Text = (size * 0.0000353 * 1200).ToString("C");
+                        lblFee.Text = (size * 0.0000353 * 1200).ToString("C");
                     }
                 }
                 else if ("3".Equals(ddlLogistics.SelectedValue))
                 {
-                    ltrLogistics.Text = ddlLogistics.SelectedItem.Text;
+                    lblLogisticsName.Text = ddlLogistics.SelectedItem.Text;
 
                     var weight = Convert.ToDouble(txtWeight.Text);
                     var feeByWeight = 80 + (weight * 10);
@@ -63,11 +63,11 @@ namespace WebApplication1
 
                     if (feeByWeight < feeBySize)
                     {
-                        ltrFee.Text = feeByWeight.ToString("C");
+                        lblFee.Text = feeByWeight.ToString("C");
                     }
                     else
                     {
-                        ltrFee.Text = feeBySize.ToString("C");
+                        lblFee.Text = feeBySize.ToString("C");
                     }
                 }
             }
