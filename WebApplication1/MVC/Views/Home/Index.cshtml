@@ -1,0 +1,68 @@
+﻿@model WebApplication1.Models.LogisticsRequestModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <table>
+                <tr>
+                    <td>商品名稱</td>
+                    <td>
+                        @Html.TextBoxFor(x => x.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>重量</td>
+                    <td>
+                        @Html.TextBoxFor(x => x.Weight)
+                    </td>
+                </tr>
+                <tr>
+                    <td>長</td>
+                    <td>
+                        @Html.TextBoxFor(x => x.Length)
+                    </td>
+                </tr>
+                <tr>
+                    <td>寬</td>
+                    <td>
+                        @Html.TextBoxFor(x => x.Width)
+                    </td>
+                </tr>
+                <tr>
+                    <td>高</td>
+                    <td>
+                        @Html.TextBoxFor(x => x.Height)
+                    </td>
+                </tr>
+                <tr>
+                    <td>物流商</td>
+                    <td>
+                        @Html.DropDownListFor(x => x.LogisticsType,
+                            new[]
+                            {
+                                new SelectListItem(){ Text = "黑貓", Value = "1"},
+                                new SelectListItem(){ Text = "新竹貨運", Value = "2"},
+                                new SelectListItem(){ Text = "郵局", Value = "3"},
+                            })
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="計算運費" />
+        </div>
+    }
+
+</body>
+</html>

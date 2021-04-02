@@ -1,0 +1,20 @@
+﻿@model WebApplication1.Models.LogisticsResponseModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+    <div>
+        計算結果:<br />
+        物流商:@Model.LogisticsName<br />
+        運費:@Model.Fee.ToString("C")
+    </div>
+</body>
+</html>
